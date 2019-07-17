@@ -16,11 +16,20 @@ public class TicTacToe {
 			{'\0', '\0', '\0'}
 	};
 	
+	private char lastPlayer = '\0';
+	
 	public void play(int x, int y) {
 		checkAxis(x);
 		checkAxis(y);
 		setBox(x, y);
-		
+		lastPlayer = nextPlayer();
+	}
+	
+	public char nextPlayer() {
+		if (lastPlayer == 'X') {
+			return 'O';
+		}
+		return 'X';
 	}
 	
 	private void checkAxis(int axis) {
