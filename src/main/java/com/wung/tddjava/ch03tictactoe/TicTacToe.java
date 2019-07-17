@@ -55,31 +55,24 @@ public class TicTacToe {
 	}
 	
 	private boolean isWin() {
+		int playerTotal = lastPlayer * 3;
+		int diagonal1 = '\0';
+		int diagonal2 = '\0';
 		for (int index = 0; index < SIZE; index++) {
-			if (board[0][index].equals(lastPlayer) &&
-					board[1][index].equals(lastPlayer) &&
-					board[2][index].equals(lastPlayer)
-					) {
+			diagonal1 += board[index][index];
+			diagonal2 += board[index][SIZE - index - 1];
+			// 水平
+			if (board[0][index] + board[1][index] + board[2][index] == playerTotal) {
 				return true;
 			}
-			if (board[index][0].equals(lastPlayer) &&
-					board[index][1].equals(lastPlayer) &&
-					board[index][2].equals(lastPlayer)
-					) {
+			// 垂直
+			if (board[index][0] + board[index][1] + board[index][2] == playerTotal) {
 				return true;
 			}
 		}
 		
-		if (board[0][0].equals(lastPlayer) &&
-				board[1][1].equals(lastPlayer) &&
-				board[2][2].equals(lastPlayer)
-				) {
-			return true;
-		}
-		if (board[0][2].equals(lastPlayer) &&
-				board[1][1].equals(lastPlayer) &&
-				board[2][0].equals(lastPlayer)
-				) {
+		// 对角线
+		if (diagonal1 == playerTotal || diagonal2 == playerTotal) {
 			return true;
 		}
 
