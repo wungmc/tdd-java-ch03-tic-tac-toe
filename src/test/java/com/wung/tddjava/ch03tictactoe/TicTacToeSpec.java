@@ -73,6 +73,7 @@ public class TicTacToeSpec {
 		Assert.assertEquals("No winner", actual);
 	}
 	
+	// 水平方向
 	@Test
 	public void whenPlayAndWholeHorizontalLineThenWinner() {
 		ticTacToe.play(1, 1); // X
@@ -83,6 +84,7 @@ public class TicTacToeSpec {
 		Assert.assertEquals("X winner", acutal);
 	}
 	
+	// 垂直方向
 	@Test
 	public void whenPlayAndWholeVerticalLineThenWinner() {
 		ticTacToe.play(2, 1); // X
@@ -95,6 +97,7 @@ public class TicTacToeSpec {
 	}
 	
 	
+	// 左上角到右下角的对角线
 	@Test
 	public void whenPlayAndWholeTopBottomDiagonalLineThenWinner() {
 		ticTacToe.play(1, 1); // X
@@ -105,7 +108,7 @@ public class TicTacToeSpec {
 		Assert.assertEquals("X winner", acutal);
 	}
 	
-	
+	// 左下角到右上角的对角线
 	@Test
 	public void whenPlayAndWholeBottomTopDiagonalLineThenWinner() {
 		ticTacToe.play(1, 3); // X
@@ -114,6 +117,21 @@ public class TicTacToeSpec {
 		ticTacToe.play(1, 2); // O
 		String acutal = ticTacToe.play(3, 1); // X
 		Assert.assertEquals("X winner", acutal);
+	}
+	
+	// 平局
+	@Test
+	public void t() {
+		ticTacToe.play(1, 1);
+		ticTacToe.play(1, 2);
+		ticTacToe.play(1, 3);
+		ticTacToe.play(2, 1);
+		ticTacToe.play(2, 3);
+		ticTacToe.play(2, 2);
+		ticTacToe.play(3, 1);
+		ticTacToe.play(3, 3);
+		String actual = ticTacToe.play(3, 2);
+		Assert.assertEquals("draw", actual);
 	}
 	
 }
