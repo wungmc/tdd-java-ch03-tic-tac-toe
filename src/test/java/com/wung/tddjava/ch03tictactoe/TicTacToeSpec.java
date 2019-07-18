@@ -25,18 +25,21 @@ public class TicTacToeSpec {
 		ticTacToe = new TicTacToe();
 	}
 	
+	// x 超出边界时抛异常
 	@Test
 	public void whenXOutsideBoardThenThrowRuntimeException() {
 		exception.expect(RuntimeException.class);
 		ticTacToe.play(5, 2);
 	}
 	
+	// y 超出边界时抛异常
 	@Test
 	public void whenYOutsideBoardThenThrowRuntimeException() {
 		exception.expect(RuntimeException.class);
 		ticTacToe.play(2, 5);
 	}
 	
+	// 落子在已经有子的位置时抛异常
 	@Test
 	public void whenOccupiedThenThrowRuntimeException() {
 		ticTacToe.play(2, 1);
@@ -73,6 +76,7 @@ public class TicTacToeSpec {
 		Assert.assertEquals("No winner", actual);
 	}
 	
+	// 水平
 	@Test
 	public void whenPlayAndWholeHorizontalLineThenWinner() {
 		ticTacToe.play(1, 1); // X
@@ -83,6 +87,7 @@ public class TicTacToeSpec {
 		Assert.assertEquals("X winner", acutal);
 	}
 	
+	// 垂直
 	@Test
 	public void whenPlayAndWholeVerticalLineThenWinner() {
 		ticTacToe.play(2, 1); // X
@@ -94,7 +99,7 @@ public class TicTacToeSpec {
 		Assert.assertEquals("O winner", acutal);
 	}
 	
-	
+	// 左上角到右下角对角线
 	@Test
 	public void whenPlayAndWholeTopBottomDiagonalLineThenWinner() {
 		ticTacToe.play(1, 1); // X
@@ -105,7 +110,7 @@ public class TicTacToeSpec {
 		Assert.assertEquals("X winner", acutal);
 	}
 	
-	
+	// 左下角到右上角对角线
 	@Test
 	public void whenPlayAndWholeBottomTopDiagonalLineThenWinner() {
 		ticTacToe.play(1, 3); // X
