@@ -10,15 +10,17 @@ package com.wung.tddjava.ch03tictactoe;
  */
 public class TicTacToe {
 	
+	private static final char DEFAULT_CHAR = '\0';
+	
 	private Character[][] board = {
-			{'\0', '\0', '\0'},
-			{'\0', '\0', '\0'},
-			{'\0', '\0', '\0'}
-	};
+			{DEFAULT_CHAR, DEFAULT_CHAR, DEFAULT_CHAR},
+			{DEFAULT_CHAR, DEFAULT_CHAR, DEFAULT_CHAR},
+			{DEFAULT_CHAR, DEFAULT_CHAR, DEFAULT_CHAR}
+		};
 	
 	private static final int SIZE = 3;
 	
-	private char lastPlayer = '\0';
+	private char lastPlayer = DEFAULT_CHAR;
 	
 	public String play(int x, int y) {
 		checkAxis(x);
@@ -49,12 +51,10 @@ public class TicTacToe {
 	}
 	
 	private void setBox(int x, int y, char lastPlayer) {
-		if (board[x - 1][y - 1] != '\0') {
+		if (board[x - 1][y - 1] != DEFAULT_CHAR) {
 			throw new RuntimeException("Box is occupied");
 		}
-		else {
-			board[x - 1][y - 1] = lastPlayer;
-		}
+		board[x - 1][y - 1] = lastPlayer;
 	}
 	
 	private boolean isWin(int x, int y) {
@@ -63,6 +63,7 @@ public class TicTacToe {
 		int vertical = '\0';
 		int diagonal1 = '\0';
 		int diagonal2 = '\0';
+
 		for (int index = 0; index < SIZE; index++) {
 			// 无需检查所有条件，只检查与最后一个落子位置相关的获胜条件即可。
 			horizontal += board[index][y - 1];
@@ -72,14 +73,11 @@ public class TicTacToe {
 			
 		}
 		
-		if (horizontal == playerTotal ||
+		return horizontal == playerTotal ||
 				vertical == playerTotal ||
 				diagonal1 == playerTotal ||
-				diagonal2 == playerTotal) {
-			return true;
-		}
-
-		return false;
+				diagonal2 == playerTotal;
+		
 	}
 	
 	private boolean isDraw() {
