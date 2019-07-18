@@ -24,4 +24,5 @@
 ````
 gradle clean test jacocoTestReport
 ````
+报告路径：build/reports/jacoco/test/html/ 下。
 

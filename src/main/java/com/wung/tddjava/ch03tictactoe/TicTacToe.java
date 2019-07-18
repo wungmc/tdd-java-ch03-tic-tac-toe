@@ -44,7 +44,7 @@ public class TicTacToe {
 	
 	private void checkAxis(int axis) {
 		if (axis < 1 || axis > SIZE) {
-			throw new RuntimeException("Y is outside board!");
+			throw new RuntimeException("axis is outside board!");
 		}
 	}
 	
