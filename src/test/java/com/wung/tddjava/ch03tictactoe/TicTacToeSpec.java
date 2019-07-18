@@ -121,7 +121,7 @@ public class TicTacToeSpec {
 	
 	// 平局
 	@Test
-	public void t() {
+	public void whenAllBoxesAreFilledThenDraw() {
 		ticTacToe.play(1, 1);
 		ticTacToe.play(1, 2);
 		ticTacToe.play(1, 3);
